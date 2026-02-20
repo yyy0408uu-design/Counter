@@ -46,6 +46,7 @@ html, body {
   font-size: 14px;
   color: #ffd700;
   animation: sparkle 1.8s infinite ease-in-out;
+  pointer-events: none;
 }
 .sparkle:nth-child(1) {
   top: -15px;
@@ -80,6 +81,7 @@ html, body {
 <body>
   <div class="top">我們相遇已經</div>
   <div class="number" id="days">
+    <span class="text-content"></span>
     <span class="sparkle">✨</span>
     <span class="sparkle">✨</span>
     <span class="sparkle">✨</span>
@@ -89,10 +91,13 @@ html, body {
   <div class="info">2024/07/15 Eudora & Sylus</div>
 
 <script>
+// 自動計算天數
 const meetDate = new Date("2024-07-15");
 const today = new Date();
 const diffDays = Math.floor((today - meetDate) / (1000 * 60 * 60 * 24));
-document.getElementById("days").childNodes[0].textContent = diffDays;
+
+// 顯示天數
+document.querySelector(".text-content").textContent = diffDays;
 </script>
 </body>
 </html>
