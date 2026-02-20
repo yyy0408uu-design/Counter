@@ -13,10 +13,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* 🔥 無多餘空白 */
 html, body {
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background: transparent;
+}
+
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,26 +32,26 @@ html, body {
   font-family: "ZCOOL KuaiLe", sans-serif;
   color: #64D2FF;
   text-align: center;
-  overflow: hidden;
 }
+
+/* 🔥 自適應字體：隨頁面寬度縮放 */
 .top {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: clamp(18px, 6vw, 28px);
+  margin-bottom: clamp(5px, 2vw, 10px);
 }
 .number {
-  font-size: 60px;
+  font-size: clamp(40px, 15vw, 70px);
   font-weight: bold;
   position: relative;
   display: inline-block;
 }
-/* 閃亮動畫 */
 @keyframes sparkle {
   0%, 100% { opacity: 0; transform: scale(0.5); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 .sparkle {
   position: absolute;
-  font-size: 14px;
+  font-size: clamp(10px, 4vw, 16px);
   color: #ffd700;
   animation: sparkle 1.8s infinite ease-in-out;
   pointer-events: none;
@@ -69,12 +77,12 @@ html, body {
   animation-delay: 1.2s;
 }
 .bottom-text {
-  font-size: 22px;
-  margin-top: 10px;
+  font-size: clamp(16px, 5vw, 24px);
+  margin-top: clamp(5px, 2vw, 10px);
 }
 .info {
-  font-size: 16px;
-  margin-top: 12px;
+  font-size: clamp(12px, 3vw, 18px);
+  margin-top: clamp(8px, 2vw, 12px);
 }
 </style>
 </head>
@@ -91,12 +99,9 @@ html, body {
   <div class="info">2024/07/15 Eudora & Sylus</div>
 
 <script>
-// 自動計算天數
 const meetDate = new Date("2024-07-15");
 const today = new Date();
 const diffDays = Math.floor((today - meetDate) / (1000 * 60 * 60 * 24));
-
-// 顯示天數
 document.querySelector(".text-content").textContent = diffDays;
 </script>
 </body>
