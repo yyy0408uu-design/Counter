@@ -3,106 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>相遇紀念日</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<title>出道紀念日</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-/* 🔥 無多餘空白 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Quicksand:wght@400;500;600&display=swap');
+
+/* 🔥 關鍵：完全沒有多餘空白 */
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: transparent;
 }
 
-body {
+#wrapper {
+  width: 100%;
+  height: 100%;
+  background: #fff9e6;
+  background-image: url("https://www.transparenttextures.com/patterns/cat.svg");
+  position: relative;
+  overflow: hidden;
+  font-family: "Noto Sans TC", "Quicksand", sans-serif;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "ZCOOL KuaiLe", sans-serif;
-  color: #64D2FF;
-  text-align: center;
+  padding: 0 10px;
+  z-index: 2;
 }
 
-/* 🔥 自適應字體：隨頁面寬度縮放 */
-.top {
-  font-size: clamp(18px, 6vw, 28px);
-  margin-bottom: clamp(5px, 2vw, 10px);
+.line-top {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* 🔥 自適應字體 */
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 500;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, #ff80ab, #4fc3f7);
+  -webkit-background-clip: text;
+  color: transparent;
 }
-.number {
-  font-size: clamp(40px, 15vw, 70px);
+
+.line-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 🔥 自適應字體 */
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 500;
+  background: linear-gradient(90deg, #ff80ab, #4fc3f7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.num {
+  display: flex;
+  gap: 6px;
+}
+
+.d {
+  width: clamp(28px, 4vw, 34px);
+  height: clamp(28px, 4vw, 34px);
+  background: #fff;
+  border: 2px solid #f8bbd0;
+  border-radius: 50%;
+  font-size: clamp(14px, 2.2vw, 16px);
   font-weight: bold;
-  position: relative;
-  display: inline-block;
+  background: linear-gradient(90deg, #ff80ab, #4fc3f7);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-.sparkle {
+
+.bubble {
   position: absolute;
-  font-size: clamp(10px, 4vw, 16px);
-  color: #ffd700;
-  animation: sparkle 1.8s infinite ease-in-out;
+  font-size: 12px;
+  animation: bubble-fly 6s linear infinite;
   pointer-events: none;
+  z-index: 1;
 }
-.sparkle:nth-child(1) {
-  top: -15px;
-  left: -25px;
-  animation-delay: 0s;
-}
-.sparkle:nth-child(2) {
-  top: -8px;
-  right: -20px;
-  animation-delay: 0.4s;
-}
-.sparkle:nth-child(3) {
-  bottom: -12px;
-  left: 15px;
-  animation-delay: 0.8s;
-}
-.sparkle:nth-child(4) {
-  bottom: -6px;
-  right: 10px;
-  animation-delay: 1.2s;
-}
-.bottom-text {
-  font-size: clamp(16px, 5vw, 24px);
-  margin-top: clamp(5px, 2vw, 10px);
-}
-.info {
-  font-size: clamp(12px, 3vw, 18px);
-  margin-top: clamp(8px, 2vw, 12px);
+
+@keyframes bubble-fly {
+  0% { transform: translateY(100%); opacity:1; }
+  100% { transform: translateY(-20px); opacity:0; }
 }
 </style>
 </head>
+
 <body>
-  <div class="top">我們相遇已經</div>
-  <div class="number" id="days">
-    <span class="text-content"></span>
-    <span class="sparkle">✨</span>
-    <span class="sparkle">✨</span>
-    <span class="sparkle">✨</span>
-    <span class="sparkle">✨</span>
+<div id="wrapper">
+  <div class="box">
+    <div class="line-top">
+      出道
+      <div class="num">
+        <div class="d" id="d1">0</div>
+        <div class="d" id="d2">0</div>
+        <div class="d" id="d3">0</div>
+        <div class="d" id="d4">0</div>
+      </div>
+      days
+    </div>
+    <div class="line-bottom">
+      2025/6/2 DEBUT
+    </div>
   </div>
-  <div class="bottom-text">天 啦(✿´༥`✿)</div>
-  <div class="info">2024/07/15 Eudora & Sylus</div>
+</div>
 
 <script>
-const meetDate = new Date("2024-07-15");
-const today = new Date();
-const diffDays = Math.floor((today - meetDate) / (1000 * 60 * 60 * 24));
-document.querySelector(".text-content").textContent = diffDays;
+function createBubble(){
+  const b=document.createElement('div');
+  b.className='bubble';
+  b.textContent='🫧';
+  b.style.left = Math.random()*100+'%';
+  document.getElementById('wrapper').appendChild(b);
+  setTimeout(()=>b.remove(),6000);
+}
+setInterval(createBubble,350);
+
+function getDays(){
+  const debut = new Date('2025-06-02');
+  const now = new Date();
+  const diff = now - debut;
+  return Math.max(0, Math.floor(diff / (1000*60*60*24)));
+}
+
+function showCount(num) {
+  const str = num.toString().padStart(4, "0");
+  document.getElementById("d1").textContent = str[0];
+  document.getElementById("d2").textContent = str[1];
+  document.getElementById("d3").textContent = str[2];
+  document.getElementById("d4").textContent = str[3];
+}
+
+const days = getDays();
+showCount(days);
 </script>
 </body>
 </html>
